@@ -1,0 +1,62 @@
+{
+	"name": "startup-backend",
+	"version": "1.0.0",
+	"main": "index.js",
+	"license": "MIT",
+	"scripts": {
+		"lint": "eslint . --ext .js",
+		"pretty": "prettier --write 'src/**/*.js",
+		"precommit": "lint-staged",
+		"prepare": "husky install",
+		"start": "node ./src/index.js",
+		"dev": "nodemon ./src/index.js"
+	},
+	"dependencies": {
+		"bcrypt": "^5.0.1",
+		"bluebird": "^3.7.2",
+		"config": "^3.3.7",
+		"cors": "^2.8.5",
+		"dotenv": "^14.2.0",
+		"express": "^4.17.2",
+		"jsonwebtoken": "^8.5.1",
+		"lodash": "^4.17.21",
+		"nodemon": "^2.0.15",
+		"pg": "^8.7.1",
+		"pg-hstore": "^2.3.4",
+		"sequelize": "^6.13.0",
+		"swagger-jsdoc": "^6.1.0",
+		"swagger-ui-express": "^4.3.0"
+	},
+	"devDependencies": {
+		"add": "^2.0.6",
+		"babel-eslint": "^10.1.0",
+		"eslint": "^8.7.0",
+		"eslint-config-airbnb-base": "^15.0.0",
+		"eslint-config-prettier": "^8.3.0",
+		"eslint-plugin-import": "^2.25.4",
+		"eslint-plugin-prettier": "^4.0.0",
+		"husky": "^7.0.4",
+		"lint-staged": "^12.2.0",
+		"prettier": "^2.5.1",
+		"sequelize-cli": "^6.4.1",
+		"yarn": "^1.22.17"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"*.{js}": [
+			"yarn run lint"
+		]
+	},
+	"moduleFileExtensions": [
+		"js",
+		"json",
+		"node"
+	],
+	"modulePaths": [
+		"<rootDir>/src"
+	]
+}
