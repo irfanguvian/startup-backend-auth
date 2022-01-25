@@ -26,9 +26,13 @@
  *         password:
  *           description: Password of user
  *           type: string
+ *         client_secret:
+ *           description: client secret key
+ *           type: string
  *       required:
  *         - username
  *         - password
+ *         - client_secret
  */
 function postUserAuthRouterFcomposer(diHash) {
   const {
