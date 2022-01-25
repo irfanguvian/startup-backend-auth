@@ -1,3 +1,5 @@
+const TokenConst = require("../../const/token");
+
 function postUserAuthHandlerFcomposer(diHash) {
   const {
     bcrypt,
@@ -9,11 +11,26 @@ function postUserAuthHandlerFcomposer(diHash) {
 
   const {
     User,
+    Token,
   } = Model;
 
   async function postUserAuthHandler(req, res) {
     try {
       const body = req.body;
+
+      const checkClientSecret = await Token
+      .findOne({
+        where: {
+          name: TokenConst.CLIENT_SECRET,
+          token: body.client_secret,
+        },
+      });
+
+      if (lodash.isEmpty(checkClientSecret)) {
+        return res.status(401).json({
+          message: "invalid token credentials",
+        });
+      }
 
       const getUser = await User.findOne({
         where: {
